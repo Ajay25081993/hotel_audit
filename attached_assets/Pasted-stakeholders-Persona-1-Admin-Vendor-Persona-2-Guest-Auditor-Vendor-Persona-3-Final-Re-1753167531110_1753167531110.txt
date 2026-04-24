@@ -1,0 +1,129 @@
+stakeholders:
+ Persona 1: Admin (Vendor) 
+ Persona 2: Guest Auditor (Vendor)
+ Persona 3: Final Reviewer (QA from Vendor Agency)
+ Persona 4: QA / Corporate Team
+ Persona 5: Hotel GM / Franchise Owner 
+ 
+1. Executive Summary
+The initiative focuses on automating hotel brand audits by leveraging AI technology to 
+analyze diverse inputs such as photos, videos, and text-based checklists. Outputs include 
+detailed reports on facilities, identification of gaps and non-compliance issues, scored 
+checklist items, and compliance zone categorizations to drive operational improvements.
+2. Goals and Objectives
+High-Level Goals:
+- Enable automated evaluation of audits to diminish manual processing times.
+- Ensure scoring consistency across evaluations to facilitate equitable compliance 
+tracking.
+- Provide rapid, actionable insights through report generation.
+- Classify hotel compliance levels into zones with distinct labels: Red, Amber, Green.
+Low-Level Objectives:
+- Utilize AI models to process multi-format inputs, ensuring accuracy above 85%.
+- Achieve scalability capable of handling up to 500 audits per day.
+- Ensure encryption at rest and in transit to maintain data security.
+3. Scope of the Use Case
+In-Scope:
+- Multi-format input acceptance (photos, videos, and checklists).
+- AI analysis of visual and text content for facilities audit.
+- Scoring and zone classification based on compliance parameters with predefined labels.
+Out-of-Scope:
+- Development of real-time dashboards or intricate analytics tools beyond basic reporting.
+4. Functional Requirements
+High-Level Functional Requirements:
+- FR1: Support image and video processing via integrated capture tools or APIs.
+- FR2: Include voice-note-to-text conversion for supplementary evidence collection.
+- FR3: Generate thorough reports detailing operational insights and compliance status.
+Low-Level Functional Requirements:
+- FR4: Employ NLP and sentiment analysis for detailed checklist evaluations.
+- FR5: AI-driven tagging to identify non-compliance and recommend Corrective Action 
+Plans (CAPs).
+- FR6: Produce downloadable reports in multiple formats (PDF, Excel) for extensive 
+stakeholder review.
+5. Non-Functional Requirements
+High-Level Non-Functional Requirements:
+- NFR1: At least 85% accuracy in evaluations to ensure credibility.
+- NFR2: Maximize processing performance, delivering reports in under 2 minutes.
+Low-Level Non-Functional Requirements:
+- NFR3: Adherence to GDPR-compliant data practices, including anonymized audit data.
+- NFR4: Ensure robust security measures for compliance with privacy laws.
+User Roles and Responsibilities:
+
+ Persona 1: Vendor Admin (Audit Coordinator)
+ Goal: Manage audit scheduling, assign auditors/reviewers, and configure audit scope
+ Journey:
+1. Log into Admin dashboard
+2. View list of properties due for audit (based on calendar or IHCL triggers)
+3. Assign Mystery Guest Auditor and QA Reviewer
+4. Configure audit type, checklist template, and scope (e.g., F&B only, Room + Service)
+5. Track audit progress for each assignment
+6. Reassign or replace auditors if availability changes
+7. Manage checklist library and compliance scoring weights
+ Persona 2: Guest Auditor (Vendor)
+ Goal: Conduct the audit, record observations, and generate an initial AI-assisted report 
+draft
+ Journey:
+1. Login via secure portal (OTP/SSO)
+2. Access assigned audit for a specific Taj hotel
+3. Enter checklist scores, comments, and upload media
+4. Submit draft audit report (triggers AI scoring, tagging, summarization)
+5. View AI-generated report and flag anomalies (optional)
+6. Await QA Reviewer’s validation
+ Note: Cannot submit the final report — responsibility ends at “Draft + Evidence 
+Collection”
+ Persona 3: Final Reviewer (QA from Vendor Agency)
+ Goal: Review AI-generated draft report, validate or override it, and formally submit to 
+IHCL
+ Journey:
+1. Log in to QA Reviewer portal
+2. Access submitted drafts (AI-evaluated)
+3. Validate: 
+o Checklist scores
+o AI-generated Tajness/behavioral observations
+6. Reassign or replace auditors if availability changes
+7. Manage checklist library and compliance scoring weights
+ Persona 2: Guest Auditor (Vendor)
+ Goal: Conduct the audit, record observations, and generate an initial AI-assisted report 
+draft
+ Journey:
+1. Login via secure portal (OTP/SSO)
+2. Access assigned audit for a specific Taj hotel
+3. Enter checklist scores, comments, and upload media
+4. Submit draft audit report (triggers AI scoring, tagging, summarization)
+5. View AI-generated report and flag anomalies (optional)
+6. Await QA Reviewer’s validation
+ Note: Cannot submit the final report — responsibility ends at “Draft + Evidence 
+Collection”
+ Persona 3: Final Reviewer (QA from Vendor Agency)
+ Goal: Review AI-generated draft report, validate or overri…
+7. Audit Parameters
+Category: Facilities and Operations
+- Parameters: 
+✓ Cleanliness & Hygiene: Cleanliness standards, staff hygiene, sanitization practices.
+✓ Branding Compliance: Visual adherence to branding, uniform compliance.
+✓ Operational Efficiency: SOP adherence, service delivery standards.
+Category: Compliance
+- Parameters: 
+✓ Regulatory Compliance: Display licenses, fire exit accessibility, safety protocol 
+adherence.
+9. Technology Considerations
+1. Input Layer:
+* Devices capturing data (cameras, video recording devices, mobile 
+applications for checklists)
+* Initial storage for raw data input (photos, videos, and checklists)
+2. Processing Layer:
+* APIs (PDF, Image/Video recognition, language processing)
+* AI Model (Gemini Flash 2.0) for process…
+* Report Generation Module to produce facility reports, categorize gaps, and 
+label compliance zones.
+4. Output Layer:
+* Storage for structured outputs like detailed reports and scores.
+* Dashboard Interface for review and action by stakeholders.
+10. Success Criteria
+- Evaluation Accuracy: Maintain system accuracy above 85%.
+- Audit Processing Speed: Ensure reports are generated within 2 minutes.
+- Corrective Action Plans: Suggest scope of improvements based on audit findings.
+11. Approvals
+Project Manager: TBD
+Approval Date: TBD
+
+
