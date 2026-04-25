@@ -10,8 +10,11 @@ class Settings(BaseSettings):
     VERSION: str = "1.0.0"
     API_V1_STR: str = "/api/v1"
     
-    # Database
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./hotel_audit.db")
+    # Database (PostgreSQL required - Neon pooled endpoint)
+    DATABASE_URL: str = os.getenv(
+        "DATABASE_URL",
+        "postgresql://neondb_owner:npg_NOB8Dzrw6piY@ep-broad-mud-aorgruz0-pooler.c-2.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require",
+    )
     
     # Security
     SECRET_KEY: str = os.getenv("SECRET_KEY", "your-secret-key-hotel-audit-2024")

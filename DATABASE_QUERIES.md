@@ -1,5 +1,10 @@
 # Database Schema and Migration Queries
 
+> **Note:** This project runs on PostgreSQL only. The legacy SQLite paths in
+> the Python backend have been removed. Use
+> `python_backend/migrate_sqlite_to_postgres.py` to copy any historical SQLite
+> data into Postgres.
+
 ## Current PostgreSQL Tables
 
 ### 1. Users Table

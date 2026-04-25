@@ -57,7 +57,7 @@ A complete hotel audit management system with React frontend, Python backend, an
 ### Quick Start
 ```bash
 # 1. All dependencies are already installed!
-# 2. Database is already set up and seeded!
+# 2. Make sure PostgreSQL is running and the hotel_audit database exists.
 # 3. Start the full system:
 ./start_full_system.sh
 ```
@@ -71,14 +71,22 @@ pip install -r requirements.txt
 # Install Node.js dependencies
 npm install
 
-# Start PostgreSQL
+# Start PostgreSQL (Linux example)
 sudo service postgresql start
 
-# Initialize database
+# One-time: provision the database and role used by the app.
+#   psql -U postgres -c "CREATE ROLE hotelaudit WITH LOGIN PASSWORD 'password123';"
+#   psql -U postgres -c "CREATE DATABASE hotel_audit OWNER hotelaudit;"
+# (Override DATABASE_URL in python_backend/.env to use different credentials.)
+
+# Initialize / seed the schema
 cd python_backend && python init_db.py
 
+# (Optional) bring legacy SQLite data over into PostgreSQL
+python migrate_sqlite_to_postgres.py --truncate
+
 # Start backend
-cd python_backend && uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 
 # Start frontend (in another terminal)
 npm run dev
@@ -195,7 +203,15 @@ Visit http://localhost:8000/docs for interactive API documentation with Swagger 
 
 **PostgreSQL Connection Error**
 ```bash
+# Linux
 sudo service postgresql start
+
+# Windows
+# Open "Services" and start the "postgresql-x64-XX" service, or:
+#   net start postgresql-x64-16
+
+# Verify the connection used by the backend
+python -c "import psycopg2; psycopg2.connect(host='localhost', port=5432, dbname='hotel_audit', user='hotelaudit', password='password123'); print('OK')"
 ```
 
 **Port Already in Use**

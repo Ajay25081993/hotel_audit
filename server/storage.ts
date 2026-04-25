@@ -325,10 +325,10 @@ export class MemStorage implements IStorage {
     const hotelGroup: HotelGroup = { 
       ...insertHotelGroup,
       id,
+      description: insertHotelGroup.description || null,
       sop: insertHotelGroup.sop || null,
       sopFiles: insertHotelGroup.sopFiles || null,
       createdAt: new Date(),
-      updatedAt: new Date()
     };
     this.hotelGroups.set(id, hotelGroup);
     return hotelGroup;
@@ -338,7 +338,7 @@ export class MemStorage implements IStorage {
     const hotelGroup = this.hotelGroups.get(id);
     if (!hotelGroup) return undefined;
     
-    const updated = { ...hotelGroup, ...updateData, updatedAt: new Date() };
+    const updated = { ...hotelGroup, ...updateData };
     this.hotelGroups.set(id, updated);
     return updated;
   }

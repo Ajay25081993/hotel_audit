@@ -14,9 +14,15 @@ else
     echo "✅ Virtual environment found"
 fi
 
-# Start PostgreSQL if not running
-echo "🗄️  Starting PostgreSQL..."
-sudo service postgresql start
+# Start PostgreSQL if not running (Linux only; on Windows start the service manually)
+echo "🗄️  Ensuring PostgreSQL is running..."
+if command -v service >/dev/null 2>&1; then
+    sudo service postgresql start || true
+elif command -v systemctl >/dev/null 2>&1; then
+    sudo systemctl start postgresql || true
+else
+    echo "ℹ️  Skipping auto-start (no service/systemctl). Make sure PostgreSQL is running."
+fi
 sleep 2
 
 # Function to start backend
