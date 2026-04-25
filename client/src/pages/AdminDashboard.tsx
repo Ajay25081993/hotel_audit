@@ -823,66 +823,66 @@ export default function AdminDashboard() {
         {/* Statistics Cards */}
         <div className="dashboard-section">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 dashboard-grid">
-          <div 
+          <div
             className="metric-card-primary cursor-pointer"
             onClick={() => setActiveTab('properties')}
           >
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-semibold text-blue-700 uppercase tracking-wide">Total Properties</p>
-                <p className="text-3xl font-bold text-blue-900 mt-2">{totalProperties}</p>
-                <p className="text-xs text-blue-600 mt-1">View all properties →</p>
+            <div className="flex items-center justify-between gap-2">
+              <div className="min-w-0">
+                <p className="text-xs font-semibold text-blue-700 uppercase tracking-wide truncate">Total Properties</p>
+                <p className="text-2xl font-bold text-blue-900 mt-1">{totalProperties}</p>
+                <p className="text-xs text-blue-600 mt-0.5 truncate">View all properties →</p>
               </div>
-              <div className="icon-container-primary">
-                <Building className="h-6 w-6" />
+              <div className="icon-container-primary flex-shrink-0">
+                <Building className="h-5 w-5" />
               </div>
             </div>
           </div>
-          
-          <div 
+
+          <div
             className="metric-card-warning cursor-pointer"
             onClick={() => handleTileClick('pending')}
           >
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-semibold text-amber-700 uppercase tracking-wide">Pending Audits</p>
-                <p className="text-3xl font-bold text-amber-900 mt-2">{pendingAudits}</p>
-                <p className="text-xs text-amber-600 mt-1">View pending →</p>
+            <div className="flex items-center justify-between gap-2">
+              <div className="min-w-0">
+                <p className="text-xs font-semibold text-amber-700 uppercase tracking-wide truncate">Pending Audits</p>
+                <p className="text-2xl font-bold text-amber-900 mt-1">{pendingAudits}</p>
+                <p className="text-xs text-amber-600 mt-0.5 truncate">View pending →</p>
               </div>
-              <div className="icon-container-warning">
-                <Clock className="h-6 w-6" />
+              <div className="icon-container-warning flex-shrink-0">
+                <Clock className="h-5 w-5" />
               </div>
             </div>
           </div>
 
-          <div 
+          <div
             className="metric-card-purple cursor-pointer"
             onClick={() => handleTileClick('submitted')}
           >
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-semibold text-purple-700 uppercase tracking-wide">Awaiting Review</p>
-                <p className="text-3xl font-bold text-purple-900 mt-2">{submittedAudits}</p>
-                <p className="text-xs text-purple-600 mt-1">View submitted →</p>
+            <div className="flex items-center justify-between gap-2">
+              <div className="min-w-0">
+                <p className="text-xs font-semibold text-purple-700 uppercase tracking-wide truncate">Awaiting Review</p>
+                <p className="text-2xl font-bold text-purple-900 mt-1">{submittedAudits}</p>
+                <p className="text-xs text-purple-600 mt-0.5 truncate">View submitted →</p>
               </div>
-              <div className="icon-container-purple">
-                <Eye className="h-6 w-6" />
+              <div className="icon-container-purple flex-shrink-0">
+                <Eye className="h-5 w-5" />
               </div>
             </div>
           </div>
 
-          <div 
+          <div
             className="metric-card-success cursor-pointer"
             onClick={() => handleTileClick('completed')}
           >
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-semibold text-green-700 uppercase tracking-wide">Completed</p>
-                <p className="text-3xl font-bold text-green-900 mt-2">{completedAudits}</p>
-                <p className="text-xs text-green-600 mt-1">View completed →</p>
+            <div className="flex items-center justify-between gap-2">
+              <div className="min-w-0">
+                <p className="text-xs font-semibold text-green-700 uppercase tracking-wide truncate">Completed</p>
+                <p className="text-2xl font-bold text-green-900 mt-1">{completedAudits}</p>
+                <p className="text-xs text-green-600 mt-0.5 truncate">View completed →</p>
               </div>
-              <div className="icon-container-success">
-                <CheckCircle className="h-6 w-6" />
+              <div className="icon-container-success flex-shrink-0">
+                <CheckCircle className="h-5 w-5" />
               </div>
             </div>
           </div>
