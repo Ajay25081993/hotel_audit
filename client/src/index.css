@@ -280,33 +280,45 @@
   }
   
   .metric-card-primary {
-    @apply bg-gradient-to-br from-blue-50/90 to-blue-100/90 border-blue-200/50 text-blue-900 p-4 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02];
+    @apply bg-gradient-to-br from-blue-50/90 to-blue-100/90 border-blue-200/50 text-blue-900 p-4 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02] overflow-hidden;
     backdrop-filter: blur(10px);
     margin: 4px;
   }
 
   .metric-card-success {
-    @apply bg-gradient-to-br from-green-50/90 to-green-100/90 border-green-200/50 text-green-900 p-4 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02];
+    @apply bg-gradient-to-br from-green-50/90 to-green-100/90 border-green-200/50 text-green-900 p-4 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02] overflow-hidden;
     backdrop-filter: blur(10px);
     margin: 4px;
   }
 
   .metric-card-warning {
-    @apply bg-gradient-to-br from-amber-50/90 to-amber-100/90 border-amber-200/50 text-amber-900 p-4 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02];
+    @apply bg-gradient-to-br from-amber-50/90 to-amber-100/90 border-amber-200/50 text-amber-900 p-4 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02] overflow-hidden;
     backdrop-filter: blur(10px);
     margin: 4px;
   }
 
   .metric-card-danger {
-    @apply bg-gradient-to-br from-red-50/90 to-red-100/90 border-red-200/50 text-red-900 p-4 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02];
+    @apply bg-gradient-to-br from-red-50/90 to-red-100/90 border-red-200/50 text-red-900 p-4 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02] overflow-hidden;
     backdrop-filter: blur(10px);
     margin: 4px;
   }
 
   .metric-card-purple {
-    @apply bg-gradient-to-br from-purple-50/90 to-purple-100/90 border-purple-200/50 text-purple-900 p-4 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02];
+    @apply bg-gradient-to-br from-purple-50/90 to-purple-100/90 border-purple-200/50 text-purple-900 p-4 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02] overflow-hidden;
     backdrop-filter: blur(10px);
     margin: 4px;
+  }
+
+  .metric-card-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .metric-card-value {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   /* Enhanced table styling with improved padding */
