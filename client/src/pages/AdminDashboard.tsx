@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLocation } from 'wouter';
 import { useAuth } from '@/contexts/AuthContext';
 import { Navigation } from '@/components/Navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -335,6 +336,7 @@ function ApprovedAuditDetails({ auditId, audits, properties }: { auditId: number
 export default function AdminDashboard() {
   const { user } = useAuth();
   const { toast } = useToast();
+  const [, setLocation] = useLocation();
   const [showScheduleModal, setShowScheduleModal] = useState(false);
   const [selectedPropertyId, setSelectedPropertyId] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState('audits');
@@ -887,6 +889,20 @@ export default function AdminDashboard() {
             </div>
           </div>
 
+
+          <div
+            className="metric-card cursor-pointer border-2 border-dashed flex items-center justify-center"
+            style={{ borderColor: '#2DB5DA', background: '#f0fbfe' }}
+            onClick={() => setLocation('/add-user')}
+          >
+            <div className="text-center">
+              <div className="flex justify-center mb-2">
+                <Users className="h-8 w-8" style={{ color: '#2DB5DA' }} />
+              </div>
+              <p className="text-sm font-semibold" style={{ color: '#2DB5DA' }}>Add New User</p>
+              <p className="text-xs mt-0.5" style={{ color: '#939598' }}>Create user account</p>
+            </div>
+          </div>
 
           </div>
         </div>

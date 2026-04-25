@@ -79,6 +79,12 @@ export const insertUserSchema = createInsertSchema(users).pick({
   role: true,
   name: true,
   email: true,
+}).extend({
+  name: z.string().min(1, "Name is required"),
+  username: z.string().min(1, "Username is required"),
+  email: z.string().email("Invalid email format"),
+  role: z.enum(['admin', 'auditor', 'reviewer', 'corporate', 'hotelgm']),
+  password: z.string().min(8, "Password must be at least 8 characters"),
 });
 
 export const insertHotelGroupSchema = createInsertSchema(hotelGroups).pick({
