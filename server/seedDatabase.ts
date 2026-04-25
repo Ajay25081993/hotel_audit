@@ -1,5 +1,6 @@
 import { db } from "./db";
 import { users, properties, audits, auditItems, hotelGroups } from "@shared/schema";
+import { hashSync } from "bcryptjs";
 
 export async function seedDatabase() {
   console.log("Seeding database...");
@@ -18,35 +19,35 @@ export async function seedDatabase() {
     await db.insert(users).values([
       {
         username: 'admin',
-        password: 'password',
+        password: hashSync('password', 10),
         role: 'admin',
         name: 'Admin User',
         email: 'admin@hotel.com'
       },
       {
         username: 'auditor',
-        password: 'password',
+        password: hashSync('password', 10),
         role: 'auditor',
         name: 'Sarah Johnson',
         email: 'sarah.johnson@audit.com'
       },
       {
         username: 'reviewer',
-        password: 'password',
+        password: hashSync('password', 10),
         role: 'reviewer',
         name: 'Michael Chen',
         email: 'michael.chen@qa.com'
       },
       {
         username: 'corporate',
-        password: 'password',
+        password: hashSync('password', 10),
         role: 'corporate',
         name: 'Corporate User',
         email: 'corporate@hotel.com'
       },
       {
         username: 'hotelgm',
-        password: 'password',
+        password: hashSync('password', 10),
         role: 'hotelgm',
         name: 'Hotel GM',
         email: 'gm@tajpalace.com'

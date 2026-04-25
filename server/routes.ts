@@ -6,6 +6,7 @@ import type { AuditItem } from "@shared/schema";
 import { z } from "zod";
 import { seedDatabase } from "./seedDatabase";
 import { generateCorrectiveActionPlan } from "./geminiScoring";
+import { compareSync, hashSync } from "bcryptjs";
 
 // Function to calculate audit scores from audit items
 function calculateAuditScores(auditItems: AuditItem[]) {
@@ -105,8 +106,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { username, password } = req.body;
       const user = await storage.getUserByUsername(username);
-      
-      if (!user || user.password !== password) {
+
+      if (!user) {
+        return res.status(401).json({ message: "Invalid credentials" });
+      }
+
+      // Support both legacy plain-text passwords and bcrypt-hashed passwords.
+      const isBcryptHash = typeof user.password === "string" && user.password.startsWith("$2");
+      const isPasswordValid = isBcryptHash ? compareSync(password, user.password) : user.password === password;
+
+      if (!isPasswordValid) {
         return res.status(401).json({ message: "Invalid credentials" });
       }
       
@@ -389,7 +398,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const existingByEmail = await storage.getUserByEmail(email);
       if (existingByEmail) return res.status(409).json({ message: "Email already exists" });
 
-      const created = await storage.createUser({ name, username, email, role, password });
+      const hashedPassword = hashSync(password, 10);
+      const created = await storage.createUser({ name, username, email, role, password: hashedPassword });
       const { password: _, ...userWithoutPassword } = created;
       return res.status(201).json(userWithoutPassword);
     } catch (error) {
