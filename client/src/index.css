@@ -280,33 +280,45 @@
   }
   
   .metric-card-primary {
-    @apply bg-gradient-to-br from-blue-50/90 to-blue-100/90 border-blue-200/50 text-blue-900 p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105;
+    @apply bg-gradient-to-br from-blue-50/90 to-blue-100/90 border-blue-200/50 text-blue-900 p-4 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02] overflow-hidden;
     backdrop-filter: blur(10px);
-    margin: 8px;
+    margin: 4px;
   }
-  
+
   .metric-card-success {
-    @apply bg-gradient-to-br from-green-50/90 to-green-100/90 border-green-200/50 text-green-900 p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105;
+    @apply bg-gradient-to-br from-green-50/90 to-green-100/90 border-green-200/50 text-green-900 p-4 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02] overflow-hidden;
     backdrop-filter: blur(10px);
-    margin: 8px;
+    margin: 4px;
   }
-  
+
   .metric-card-warning {
-    @apply bg-gradient-to-br from-amber-50/90 to-amber-100/90 border-amber-200/50 text-amber-900 p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105;
+    @apply bg-gradient-to-br from-amber-50/90 to-amber-100/90 border-amber-200/50 text-amber-900 p-4 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02] overflow-hidden;
     backdrop-filter: blur(10px);
-    margin: 8px;
+    margin: 4px;
   }
-  
+
   .metric-card-danger {
-    @apply bg-gradient-to-br from-red-50/90 to-red-100/90 border-red-200/50 text-red-900 p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105;
+    @apply bg-gradient-to-br from-red-50/90 to-red-100/90 border-red-200/50 text-red-900 p-4 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02] overflow-hidden;
     backdrop-filter: blur(10px);
-    margin: 8px;
+    margin: 4px;
   }
-  
+
   .metric-card-purple {
-    @apply bg-gradient-to-br from-purple-50/90 to-purple-100/90 border-purple-200/50 text-purple-900 p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105;
+    @apply bg-gradient-to-br from-purple-50/90 to-purple-100/90 border-purple-200/50 text-purple-900 p-4 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02] overflow-hidden;
     backdrop-filter: blur(10px);
-    margin: 8px;
+    margin: 4px;
+  }
+
+  .metric-card-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .metric-card-value {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   /* Enhanced table styling with improved padding */
@@ -357,7 +369,7 @@
   }
 
   .dashboard-grid {
-    @apply gap-8 mb-12;
+    @apply gap-4 mb-6;
   }
 
   /* Card content padding improvements */
@@ -393,28 +405,28 @@
 
   /* Enhanced icon containers with better spacing */
   .icon-container {
-    @apply w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg transition-all duration-300;
-    margin: 8px;
+    @apply w-10 h-10 rounded-xl flex items-center justify-center shadow-lg transition-all duration-300;
+    margin: 4px;
   }
   
   .icon-container-primary {
-    @apply bg-gradient-to-br from-blue-500 to-blue-600 text-white w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg transition-all duration-300;
+    @apply bg-gradient-to-br from-blue-500 to-blue-600 text-white w-10 h-10 rounded-xl flex items-center justify-center shadow-lg transition-all duration-300;
   }
   
   .icon-container-success {
-    @apply bg-gradient-to-br from-green-500 to-green-600 text-white w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg transition-all duration-300;
+    @apply bg-gradient-to-br from-green-500 to-green-600 text-white w-10 h-10 rounded-xl flex items-center justify-center shadow-lg transition-all duration-300;
   }
   
   .icon-container-warning {
-    @apply bg-gradient-to-br from-amber-500 to-amber-600 text-white w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg transition-all duration-300;
+    @apply bg-gradient-to-br from-amber-500 to-amber-600 text-white w-10 h-10 rounded-xl flex items-center justify-center shadow-lg transition-all duration-300;
   }
   
   .icon-container-danger {
-    @apply bg-gradient-to-br from-red-500 to-red-600 text-white w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg transition-all duration-300;
+    @apply bg-gradient-to-br from-red-500 to-red-600 text-white w-10 h-10 rounded-xl flex items-center justify-center shadow-lg transition-all duration-300;
   }
   
   .icon-container-purple {
-    @apply bg-gradient-to-br from-purple-500 to-purple-600 text-white w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg transition-all duration-300;
+    @apply bg-gradient-to-br from-purple-500 to-purple-600 text-white w-10 h-10 rounded-xl flex items-center justify-center shadow-lg transition-all duration-300;
   }
 }
 
