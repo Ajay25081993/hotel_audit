@@ -351,7 +351,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { role } = req.query;
       const users = await storage.getAllUsers();
-      
+
       if (role) {
         const filteredUsers = users.filter((user: any) => user.role === role);
         res.json(filteredUsers.map((user: any) => ({ id: user.id, name: user.name, role: user.role, email: user.email })));
@@ -360,6 +360,41 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch users" });
+    }
+  });
+
+  // Create new user endpoint
+  app.post("/api/users", async (req, res) => {
+    try {
+      const name = (req.body.name || '').trim();
+      const username = (req.body.username || '').trim();
+      const email = (req.body.email || '').trim();
+      const role = (req.body.role || '').trim();
+      const password = req.body.password || '';
+
+      const validRoles = ['admin', 'auditor', 'reviewer', 'corporate', 'hotelgm'];
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!name) return res.status(400).json({ message: "Full name is required" });
+      if (!username) return res.status(400).json({ message: "Username is required" });
+      if (!email) return res.status(400).json({ message: "Email is required" });
+      if (!emailRegex.test(email)) return res.status(400).json({ message: "Invalid email format" });
+      if (!role) return res.status(400).json({ message: "Role is required" });
+      if (!validRoles.includes(role)) return res.status(400).json({ message: "Invalid role" });
+      if (!password || password.length < 8) return res.status(400).json({ message: "Password must be at least 8 characters" });
+
+      const existingByUsername = await storage.getUserByUsername(username);
+      if (existingByUsername) return res.status(409).json({ message: "Username already exists" });
+
+      const existingByEmail = await storage.getUserByEmail(email);
+      if (existingByEmail) return res.status(409).json({ message: "Email already exists" });
+
+      const created = await storage.createUser({ name, username, email, role, password });
+      const { password: _, ...userWithoutPassword } = created;
+      return res.status(201).json(userWithoutPassword);
+    } catch (error) {
+      console.error("Create user error:", error);
+      res.status(500).json({ message: "Failed to create user" });
     }
   });
 

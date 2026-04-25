@@ -8,6 +8,7 @@ import { ProtectedRoute } from "@/components/ProtectedRoute";
 import LoginPage from "@/pages/LoginPage";
 import RoleSelection from "@/pages/RoleSelection";
 import AdminDashboard from "@/pages/AdminDashboard";
+import AddUserPage from "@/pages/AddUserPage";
 import AuditorDashboard from "@/pages/AuditorDashboard";
 import ReviewerDashboard from "@/pages/ReviewerDashboard";
 import CorporateDashboard from "@/pages/CorporateDashboard";
@@ -29,7 +30,13 @@ function Router() {
           <AdminDashboard />
         </ProtectedRoute>
       </Route>
-      
+
+      <Route path="/add-user">
+        <ProtectedRoute allowedRoles={['admin']}>
+          <AddUserPage />
+        </ProtectedRoute>
+      </Route>
+
       <Route path="/auditor">
         <ProtectedRoute allowedRoles={['auditor']}>
           <AuditorDashboard />
